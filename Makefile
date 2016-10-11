@@ -18,4 +18,4 @@ miner_states.o: miner_states.H miner_states.C
 	$(CXX) -c $(INCLUDE) miner_states.C
 
 clean:
-	$(RM) *~ *.o singleton test-statemachine
+	$(RM) *~ *.o test-singleton test-statemachine
