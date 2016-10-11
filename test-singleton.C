@@ -1,10 +1,17 @@
 # include <cassert>
+# include <iostream>
 
 # include <singleton.H>
 
 using namespace std;
 
-struct Test : public Singleton<Test> { /* empty */ };
+struct Test : public Singleton<Test>
+{
+  ~Test()
+  {
+    cout << "Destructor de Test fue llamado correctamente\n";
+  }
+};
 
 int main()
 {
