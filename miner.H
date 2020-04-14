@@ -5,29 +5,32 @@
 
 class Miner : public StateMachine<Miner>
 {
-  size_t stamina;
-  size_t thirst;
-  size_t bladder;
+  double stamina;
+  double thirst;
+  double bladder;
 
 public:
   Miner()
-    : StateMachine<Miner>(MinerWorking::get_ptr_instance()),
-    stamina(100), thirst(0), bladder(0)
+    : stamina(100), thirst(0), bladder(0)
   {
-    /* empty */
+    add_state("working", MinerWorking::get_ptr_instance());
+    add_state("sleeping", MinerSleeping::get_ptr_instance());
+    add_state("drinking", MinerDrinking::get_ptr_instance());
+    add_state("wc", MinerInWc::get_ptr_instance());
+    set_initial_state("working");
   }
 
-  const size_t & get_stamina() const { return stamina; }
+  const double & get_stamina() const { return stamina; }
 
-  const size_t & get_thirst() const { return thirst; }
+  const double & get_thirst() const { return thirst; }
   
-  const size_t & get_bladder() const { return bladder; }
+  const double & get_bladder() const { return bladder; }
 
-  void add_stamina(int val) { stamina += val; }
+  void add_stamina(double val) { stamina += val; }
 
-  void add_thirst(int val) { thirst += val; }
-  
-  void add_bladder(int val) { bladder += val; }
+  void add_thirst(double val) { thirst += val; }
+
+  void add_bladder(double val) { bladder += val; }
 };
 
 # endif // MINER_H

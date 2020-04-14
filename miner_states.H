@@ -20,12 +20,12 @@ protected:
   MinerWorking() { }
   
 public:
-  void enter(Miner *)
+  void on_enter(Miner *)
   {
     cout << "Estoy comenzando a trabajar\n";
   }
   
-  void exec(Miner *);
+  void update(Miner *, double);
 
   void exit(Miner *)
   {
@@ -43,14 +43,14 @@ protected:
   MinerSleeping() { }
   
 public:
-  void enter(Miner *)
+  void on_enter(Miner *)
   {
     cout << "Estoy exhausto, voy a dormir\n";
   }
   
-  void exec(Miner *);
+  void update(Miner *, double);
 
-  void exit(Miner *)
+  void on_exit(Miner *)
   {
     cout << "¡Debo levantame!\n";
   }
@@ -66,14 +66,14 @@ protected:
   MinerDrinking() { }
 
 public:
-  void enter(Miner *)
+  void on_enter(Miner *)
   {
     cout << "Tengo sed, necesito una bebida\n";
   }
   
-  void exec(Miner *);
+  void update(Miner *, double);
 
-  void exit(Miner *)
+  void on_exit(Miner *)
   {
     cout << "¡Ya calmé mi sed!\n";
   }
@@ -89,14 +89,14 @@ protected:
   MinerInWc() { }
 
 public:
-  void enter(Miner *)
+  void on_enter(Miner *)
   {
     cout << "Necesito ir al baño\n";
   }
   
-  void exec(Miner *);
+  void update(Miner *, double);
 
-  void exit(Miner *)
+  void on_exit(Miner *)
   {
     cout << "¡Listo! De vuelta a lo mío\n";
   }

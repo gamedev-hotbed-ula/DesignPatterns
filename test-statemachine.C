@@ -1,7 +1,9 @@
 # include <unistd.h>
 # include <string>
+# include <random>
 
 # include <miner.H>
+
 
 int main(int argc, char * argv[])
 {
@@ -10,9 +12,14 @@ int main(int argc, char * argv[])
 
   Miner miner;
 
+  std::mt19937_64 rng(time(0)%std::mt19937_64::max());
+  std::exponential_distribution<double> dist(2);
+
   for (size_t i = 0; i < num_it; ++i)
     {
-      miner.exec();
+      double dt = dist(rng);
+      cout << "dt: " << dt << " minutes\n";
+      miner.update(dt);
       usleep(delay);
     }
 
